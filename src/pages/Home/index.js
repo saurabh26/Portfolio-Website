@@ -57,7 +57,7 @@ export default function Home(props) {
 
     indicatorObserver.observe(intro.current);
 
-    return function cleanUp() {
+    return () => {
       sectionObserver.disconnect();
       indicatorObserver.disconnect();
     };
@@ -121,13 +121,12 @@ export default function Home(props) {
 
   return (
     <Fragment>
-      <Helmet
-        title="Cody Bennett | Designer + Developer"
-        meta={[{
-          name: "description",
-          content: "Portfolio of Cody Bennett – a designer, full-stack developer, and creator of web & mobile solutions with a focus on motion and user experience.",
-        }]}
-      >
+      <Helmet>
+        <title>Cody Bennett | Designer + Developer</title>
+        <meta
+          name="description"
+          content="Portfolio of Cody Bennett – a designer, full-stack developer, and creator of web & mobile solutions with a focus on motion and user experience."
+        />
         <link rel="prefetch" href={iphone11} as="fetch" crossorigin="" />
         <link rel="prefetch" href={macbookPro} as="fetch" crossorigin="" />
       </Helmet>

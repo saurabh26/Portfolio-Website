@@ -30,8 +30,8 @@ const ProjectSummary = ({
   const titleId = `${id}-title`;
   const isMobile = width <= media.tablet;
   const indexText = index < 10 ? `0${index}` : index;
-  const phoneSizes = `(max-width: ${media.tablet}px) 152px, 254px`;
-  const laptopSizes = `(max-width: ${media.tablet}px) 100vw, 50vw`;
+  const phoneSizes = `(max-width: ${media.tablet}px) 30vw, 20vw`;
+  const laptopSizes = `(max-width: ${media.tablet}px) 80vw, 40vw`;
 
   const renderDetails = status => (
     <div className="project-summary__details">
