@@ -52,10 +52,10 @@ function ProjectModern() {
 
   return (
     <Fragment>
-      <Helmet
-        title={`Projects | ${title}`}
-        meta={[{ name: 'description', content: description }]}
-      />
+      <Helmet>
+        <title>{`Projects | ${title}`}</title>
+        <meta name="description" content={description} />
+      </Helmet>
       <ProjectContainer>
         <ProjectBackground
           srcSet={`${modernBackground} 1000w, ${modernBackgroundLarge} 1920w`}

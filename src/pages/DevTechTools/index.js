@@ -45,10 +45,10 @@ function DevTechTools() {
 
   return (
     <Fragment>
-      <Helmet
-        title={`Projects | ${title}`}
-        meta={[{ name: 'description', content: description }]}
-      />
+      <Helmet>
+        <title>{`Projects | ${title}`}</title>
+        <meta name="description" content={description} />
+      </Helmet>
       <ProjectContainer>
         <ProjectBackground
           srcSet={`${dttBackground} 1000w, ${dttBackgroundLarge} 1920w`}

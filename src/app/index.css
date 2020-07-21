@@ -3,6 +3,7 @@ body {
   box-sizing: border-box;
   font-family: var(--fontStack);
   font-weight: var(--fontWeightRegular);
+  font-synthesis: none;
   background: rgb(var(--rgbBackground));
   color: var(--colorTextBody);
   border: 0;
@@ -112,8 +113,4 @@ body {
   background-color: rgb(var(--rgbPrimary));
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
   z-index: -1;
-}
-
-.skip-to-main::-moz-focus-inner {
-  border: 0;
 }

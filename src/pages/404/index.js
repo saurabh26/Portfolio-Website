@@ -30,7 +30,7 @@ function NotFound() {
                   <DecoderText
                     text="Error: Redacted"
                     start={status !== 'exited'}
-                    offset={100}
+                    delay={300}
                   />
                 </h2>
                 <p
