@@ -1,31 +1,55 @@
-import React, { Suspense, Fragment } from 'react';
+import React, {
+  Fragment,
+  useEffect,
+  useState,
+  createContext,
+  useContext,
+  lazy,
+  Suspense,
+} from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import posts from 'posts';
 import Post from 'pages/Post';
 import Image from 'components/Image';
-import './index.css';
 import { useScrollRestore } from 'hooks';
 import Section from 'components/Section';
+import fetchPosts from 'posts';
+import './index.css';
+
+const Page404 = lazy(() => import('pages/404'));
 
 const ArticlesPost = ({
-  path,
+  slug,
   title,
   description,
   banner,
-  bannerVideo,
   bannerPlaceholder,
   bannerAlt,
   date,
 }) => {
+  const [hovered, setHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+  };
+
   return (
     <article className="articles__post">
-      <Link className="articles__post-content" to={`/articles${path}`}>
+      <Link
+        className="articles__post-content"
+        to={`/articles/${slug}`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <div className="articles__post-image-wrapper">
           <Image
+            play={hovered}
             className="articles__post-image"
-            srcSet={banner ? require(`posts/assets/${banner}`) : undefined}
-            videoSrc={bannerVideo ? require(`posts/assets/${bannerVideo}`) : undefined}
+            src={banner ? require(`posts/assets/${banner}`) : undefined}
             placeholder={require(`posts/assets/${bannerPlaceholder}`)}
             alt={bannerAlt}
           />
@@ -47,6 +71,7 @@ const ArticlesPost = ({
 };
 
 const Articles = () => {
+  const { posts } = useContext(ArticlesContext);
   useScrollRestore();
 
   return (
@@ -60,10 +85,10 @@ const Articles = () => {
       </Helmet>
       <Section className="articles__content">
         <div className="articles__column">
-          {posts.map(({ path, ...post }, index) => (
-            <Fragment>
+          {posts.map(({ slug, ...post }, index) => (
+            <Fragment key={slug}>
               {index !== 0 && <hr className="articles__divider" />}
-              <ArticlesPost key={path} path={path} {...post} />
+              <ArticlesPost slug={slug} {...post} />
             </Fragment>
           ))}
         </div>
@@ -72,22 +97,37 @@ const Articles = () => {
   );
 };
 
+const ArticlesContext = createContext({});
+
 const ArticlesRouter = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const grabPosts = async () => {
+      const postData = await Promise.all(fetchPosts);
+      setPosts(postData);
+    };
+
+    grabPosts();
+  }, []);
+
   return (
-    <Post>
-      <Suspense fallback={Fragment}>
+    <ArticlesContext.Provider value={{ posts }}>
+      <Suspense>
         <Switch>
-          {posts.map(({ content: PostComp, path, ...rest }) => (
+          {posts?.map(({ slug, ...rest }) => (
             <Route
-              key={path}
-              path={`/articles${path}`}
-              render={() => <PostComp {...rest} />}
+              exact
+              key={slug}
+              path={`/articles/${slug}`}
+              render={() => <Post slug={slug} {...rest} />}
             />
           ))}
-          <Route component={Articles} />
+          <Route exact component={Articles} path="/articles" />
+          <Route component={Page404} />
         </Switch>
       </Suspense>
-    </Post>
+    </ArticlesContext.Provider>
   );
 };
 
