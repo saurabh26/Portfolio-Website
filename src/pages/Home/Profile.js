@@ -97,8 +97,6 @@ const Profile = ({ id, visible, sectionRef }) => {
                   srcSet={`${profileImg} 480w, ${profileImgLarge} 960w`}
                   sizes={`(max-width: ${media.mobile}px) 100vw, 480px`}
                   alt=""
-                  width={480}
-                  height={560}
                 />
               </div>
             </div>
