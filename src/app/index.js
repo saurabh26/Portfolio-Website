@@ -20,7 +20,7 @@ const ProjectModern = lazy(() => import('pages/ProjectModern'));
 const ProjectDTT = lazy(() => import('pages/DevTechTools'));
 const ProjectMystGang = lazy(() => import('pages/MystGang'));
 // const Articles = lazy(() => import('pages/Articles'));
-const NotFound = lazy(() => import('pages/404'));
+const Page404 = lazy(() => import('pages/404'));
 
 export const AppContext = createContext();
 export const TransitionContext = createContext();
@@ -96,13 +96,7 @@ const AppRoutes = () => {
         Skip to main content
       </a>
       <Header location={location} />
-      <TransitionGroup
-        component="main"
-        className="app"
-        tabIndex={-1}
-        id="MainContent"
-        role="main"
-      >
+      <TransitionGroup component="main" className="app" tabIndex={-1} id="MainContent">
         <Transition
           key={pathname}
           timeout={msToNum(tokens.base.durationS)}
@@ -119,7 +113,7 @@ const AppRoutes = () => {
                     <Route path="/projects/dtt" component={ProjectDTT} />
                     <Route path="/projects/mystgang" component={ProjectMystGang} />
                     {/* <Route path="/articles" component={Articles} /> */}
-                    <Route component={NotFound} />
+                    <Route component={Page404} />
                   </Switch>
                 </Suspense>
               </div>

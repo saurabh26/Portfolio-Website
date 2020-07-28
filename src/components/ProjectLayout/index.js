@@ -98,7 +98,6 @@ export const ProjectBackground = ({ opacity = 0.7, className, entered, ...rest }
       role="presentation"
       style={{
         '--opacity': opacity,
-        '--initDelay': numToMs(initDelay),
         transform: reduceMotion ? undefined : `translate3d(0, ${numToPx(offset)}, 0)`,
       }}
       {...rest}

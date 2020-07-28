@@ -61,6 +61,7 @@
   opacity: 0;
   overflow: hidden;
   transform: translate3d(0, var(--offset), 0);
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
