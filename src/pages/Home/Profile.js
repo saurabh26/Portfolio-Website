@@ -31,7 +31,7 @@ const ProfileText = ({ status, titleId }) => (
       . I am a designer, full-stack developer, and creator of web & mobile solutions with a focus on motion and user experience.
     </p>
     <p className={classNames('profile__description', `profile__description--${status}`)}>
-      In my spare time, I like to play guitar and{' '}
+      In my spare time, I like to write music and{' '}
       <Anchor href="https://codepen.codyb.co" target="_blank">
         experiment with new tech
       </Anchor>

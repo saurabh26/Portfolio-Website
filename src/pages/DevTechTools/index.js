@@ -25,9 +25,6 @@ import dttToolPlaceholder from 'assets/dtt-tool-placeholder.png';
 import dttAPI from 'assets/dtt-api.png';
 import dttAPILarge from 'assets/dtt-api-large.png';
 import dttAPIPlaceholder from 'assets/dtt-api-placeholder.png';
-import dttPipeline from 'assets/dtt-pipeline.jpg';
-import dttPipelineLarge from 'assets/dtt-pipeline-large.jpg';
-import dttPipelinePlaceholder from 'assets/dtt-pipeline-placeholder.jpg';
 import dttLanding from 'assets/dtt-landing.jpg';
 import dttLandingLarge from 'assets/dtt-landing-large.jpg';
 import dttLandingPlaceholder from 'assets/dtt-landing-placeholder.jpg';
@@ -140,25 +137,6 @@ function DevTechTools() {
           </ProjectSectionColumns>
         </ProjectSection>
         <ProjectSection>
-          <ProjectSectionContent>
-            <ProjectTextRow>
-              <ProjectSectionHeading>Improving the Experience</ProjectSectionHeading>
-              <ProjectSectionText>
-                Our API gave developers complete control of their tools, but our interface lacked this flexibility with customization limited to each tool.
-              </ProjectSectionText>
-              <ProjectSectionText>
-                With the release of DevTech Tools Pipelines, tools combine into one with custom triggers, events, and other actions.
-              </ProjectSectionText>
-            </ProjectTextRow>
-            <Image
-              srcSet={`${dttPipeline} 800w, ${dttPipelineLarge} 1440w`}
-              placeholder={dttPipelinePlaceholder}
-              alt="A screenshot of tools linked in the pipeline flowchart editor."
-              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
-            />
-          </ProjectSectionContent>
-        </ProjectSection>
-        <ProjectSection light>
           <ProjectSectionContent>
             <ProjectTextRow>
               <ProjectSectionHeading>Going Online</ProjectSectionHeading>

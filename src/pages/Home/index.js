@@ -18,7 +18,7 @@ import mystgangTexturePlaceholder from 'assets/mystgang-placeholder.jpg';
 import iphone11 from 'assets/iphone-11.glb';
 import macbookPro from 'assets/macbook-pro.glb';
 
-const disciplines = ['Developer', 'Creator', 'Animator', 'Illustrator', 'Guitarist'];
+const disciplines = ['Developer', 'Creator', 'Animator', 'Illustrator', 'Musician'];
 
 export default function Home(props) {
   const { status } = useRouteTransition();
@@ -125,7 +125,7 @@ export default function Home(props) {
         <title>Cody Bennett | Designer + Developer</title>
         <meta
           name="description"
-          content="Portfolio of Cody Bennett – a designer, full-stack developer, and creator of web & mobile solutions with a focus on motion and user experience."
+          content="Portfolio of Cody Jason Bennett – a designer, full-stack developer, and creator of web & mobile solutions with a focus on motion and user experience."
         />
         <link rel="prefetch" href={iphone11} as="fetch" crossorigin="" />
         <link rel="prefetch" href={macbookPro} as="fetch" crossorigin="" />
