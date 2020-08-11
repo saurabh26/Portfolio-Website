@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import classNames from 'classnames';
 import { Transition } from 'react-transition-group';
 import Footer from 'components/Footer';
@@ -143,34 +143,13 @@ const PostParagraph = ({ children, ...rest }) => (
 );
 
 const PostImage = ({ src, alt, ...rest }) => {
-  const [size, setSize] = useState();
-  const imgRef = useRef();
   const imgSrc = src.startsWith('http') ? src : require(`posts/assets/${src}`);
 
-  useEffect(() => {
-    const { width, height } = imgRef.current;
-
-    if (width && height) {
-      setSize({ width, height });
-    }
-  }, []);
-
-  const handleLoad = event => {
-    const { width, height } = event.target;
-    setSize({ width, height });
-  };
-
   return (
-    <img
+    <Image
       className="post__image"
-      ref={imgRef}
       src={imgSrc}
-      onLoad={handleLoad}
-      loading="lazy"
-      decoding="async"
       alt={alt}
-      width={size?.width}
-      height={size?.height}
       {...rest}
     />
   );
