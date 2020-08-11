@@ -1,10 +1,11 @@
 import { pxToRem } from 'utils/style';
 
 /**
- * Transform theme token objects into CSS custom properties
+ * Transform theme token objects into CSS custom property strings
  */
 export function createThemeProperties(theme) {
   return Object.keys(theme)
+    .filter(key => key !== 'themeId')
     .map(key => `--${key}: ${theme[key]};`)
     .join('\n');
 }
