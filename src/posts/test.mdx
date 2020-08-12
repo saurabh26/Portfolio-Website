@@ -7,7 +7,7 @@ bannerPlaceholder: accessible-three-scene-placeholder.jpg
 bannerAlt: A ThreeJS scene, featuring a cube that reacts to devices' accessibility settings.
 tags: ['development', 'design', 'accessiblity']
 date: 2020-08-10
-readTime: '00:06:00:00'
+readTime: '00:03:00:00'
 ---
 
 Motion design is a critical component of user experience, but not all enjoy animations equally.
@@ -24,6 +24,8 @@ For a few years now, various operating systems have been letting users opt-out o
 When animations are disabled, all motion is reduced across the operating system.
 This setting is exposed to our browsers using a media query, `prefers-reduced-motion`.
 This way, websites can read and respect the same settings to disable animations.
+
+## CSS Implementation
 
 Animations can be disabled in CSS using a media query:
 
@@ -63,41 +65,45 @@ Although animations go from animated to still this way, a better mindset is to s
 By ensuring that the transition is set from within a media query, the animation is disabled by default for users on browsers that don't support this property.
 Browsers ignore CSS inside unrecognized media queries, so this transition doesn't apply for them.
 
+## JavaScript Hook
+
 The media queries work great for CSS animations, but we'll need a solution for JavaScript animations and transitions.
 Because this feature is implemented as a media query, it can be accessed the same way we access any media query values in JavaScript by using `window.matchMedia`:
 
 ```jsx
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function usePrefersReducedMotion() {
   const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const [reducedMotion, setReducedMotion] = useState(mediaQuery.matches);
+  const [reduceMotion, setReduceMotion] = useState(mediaQuery.matches);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     const handleMediaChange = () => {
       if (mediaQuery.matches) {
-        setReducedMotion(true);
+        setReduceMotion(true);
       }
     };
 
     mediaQuery.addListener(handleMediaChange);
 
-    return function cleanup() {
+    return () => {
       mediaQuery.removeListener(handleMediaChange);
     };
   }, []);
 
-  return (
-    <Component reducedMotion={reducedMotion} />
-  );
+  return reduceMotion;
 }
+
+export default usePrefersReducedMotion;
 ```
 
 This listener will fire when the user toggles the `reduce motion` settings in their operating system.
 
 We want to listen for this event because we want to immediately halt animations if the user toggles this setting, even if the page has already loaded / the animation is in progress.
+
+## JavaScript Implementation
 
 Here's how we would use the hook with ThreeJS, a 3D rendering library that works great with React:
 
@@ -129,14 +135,14 @@ function AccessibleCube() {
     geometry.current = new BoxGeometry(0.2, 0.2, 0.2);
     material.current = new MeshNormalMaterial();
 
-  	mesh.current = new Mesh(geometry.current, material.current);
-  	scene.current.add(mesh.current);
+    mesh.current = new Mesh(geometry.current, material.current);
+    scene.current.add(mesh.current);
 
-  	renderer.current = new WebGLRenderer({
+    renderer.current = new WebGLRenderer({
       canvas: canvasRef.current,
       powerPreference: 'high-performance',
     });
-  	renderer.current.setSize(width.current, height.current);
+    renderer.current.setSize(width.current, height.current);
 
     return function cleanup() {
       scene.current.remove(mesh.current);
@@ -159,7 +165,7 @@ function AccessibleCube() {
       animation = requestAnimationFrame(animate);
 
       mesh.current.rotation.x += 0.01;
-    	mesh.current.rotation.y += 0.02;
+      mesh.current.rotation.y += 0.02;
 
       renderer.current.render(scene.current, camera.current);
     };
@@ -183,11 +189,13 @@ function AccessibleCube() {
 export default AccessibleCube;
 ```
 
+![A ThreeJS scene, featuring a cube that reacts to devices' accessibility settings.](accessible-three-scene.mp4)
+
 We can control whether the scene is animated with the `usePrefersReducedMotion` hook.
 
 This hook is plug-and-play, so you can connect this as a boolean to any component.
 
-![A ThreeJS scene, featuring a cube that reacts to devices' accessibility settings.](accessible-three-scene.mp4)
+## Conclusion
 
 Not everyone experiences things the same way, and we need to be mindful of that in our work.
 
