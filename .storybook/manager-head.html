@@ -1,4 +1,19 @@
 <script>
+  if (navigator.doNotTrack !== '1') {
+    const script = document.createElement('script');
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-19ZKYVHWKV';
+    script.async = true;
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-19ZKYVHWKV');
+  }
+</script>
+
+<script>
   const titleTag = document.createElement('title');
   titleTag.text = 'Cody Bennett | Storybook';
 

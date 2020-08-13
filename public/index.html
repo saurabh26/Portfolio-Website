@@ -3,6 +3,21 @@
   <head>
     <meta charset="utf-8" />
 
+    <script>
+      if (navigator.doNotTrack !== '1' && navigator.userAgent !== 'ReactSnap') {
+        const script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-19ZKYVHWKV';
+        script.async = true;
+        document.head.appendChild(script);
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-19ZKYVHWKV');
+      }
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
     <meta name="theme-color" content="#111111" />
     <meta name="author" content="Cody Bennett" />
