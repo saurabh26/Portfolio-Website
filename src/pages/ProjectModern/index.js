@@ -75,7 +75,7 @@ function ProjectModern() {
               srcSet={`${modern} 800w, ${modernLarge} 1440w`}
               placeholder={modernPlaceholder}
               sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
-              alt="Landing screen of the DevTech Tools website."
+              alt="Landing screen of the Project Modern website."
             />
           </ProjectSectionContent>
         </ProjectSection>
@@ -94,7 +94,7 @@ function ProjectModern() {
               srcSet={`${modernBranding} 400w, ${modernBrandingLarge} 898w`}
               placeholder={modernBrandingPlaceholder}
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 50vw`}
-              alt="The DevTech Tools color palette and logo, featuring pipelines as electronic traces."
+              alt="The Project Modern color palette and logo, featuring a plus-embellished monogram to represent new or modern."
             />
           </ProjectSectionColumns>
         </ProjectSection>
