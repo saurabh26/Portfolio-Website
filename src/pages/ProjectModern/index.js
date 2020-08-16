@@ -118,7 +118,7 @@ function ProjectModern() {
           </ProjectSectionContent>
         </ProjectSection>
         <ProjectSection>
-          <ProjectSectionContent>
+          <ProjectSectionColumns sticky>
             <ProjectTextRow>
               <ProjectSectionHeading>A Home for Project Modern</ProjectSectionHeading>
               <ProjectSectionText>
@@ -126,58 +126,62 @@ function ProjectModern() {
               </ProjectSectionText>
             </ProjectTextRow>
             <Image
-              srcSet={`${modernLanding} 800w, ${modernLandingLarge} 1440w`}
+              srcSet={`${modernLanding} 400w, ${modernLandingLarge} 898w`}
               placeholder={modernLandingPlaceholder}
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 50vw`}
               alt="A screenshot of the landing page in production."
-              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
             />
-          </ProjectSectionContent>
+          </ProjectSectionColumns>
         </ProjectSection>
-        <ProjectSection>
-          <ProjectSectionContent>
+        <ProjectSection light>
+          <ProjectSectionColumns sticky>
             <ProjectTextRow>
-              <ProjectSectionHeading>Let's Play!</ProjectSectionHeading>
+              <ProjectSectionHeading>Let's Play</ProjectSectionHeading>
               <ProjectSectionText>
                 Project Modern boasts a large, healthy playerbase, and we showed that with cultivated tournaments for everyone.
               </ProjectSectionText>
             </ProjectTextRow>
-            <Image
-              srcSet={`${modernEvents} 800w, ${modernEventsLarge} 1440w`}
-              placeholder={modernEventsPlaceholder}
-              alt="A screenshot of the events page in production."
-              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
-            />
-            <Image
-              srcSet={`${modernEvent} 800w, ${modernEventLarge} 1440w`}
-              placeholder={modernEventPlaceholder}
-              alt="A screenshot of an event page in production."
-              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
-              style={{ marginTop: 'var(--space3XL)' }}
-            />
-          </ProjectSectionContent>
+            <div>
+              <Image
+                srcSet={`${modernEvents} 800w, ${modernEventsLarge} 1440w`}
+                placeholder={modernEventsPlaceholder}
+                alt="A screenshot of the events page in production."
+                sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 50vw`}
+              />
+              <Image
+                srcSet={`${modernEvent} 800w, ${modernEventLarge} 1440w`}
+                placeholder={modernEventPlaceholder}
+                alt="A screenshot of an event page in production."
+                sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 50vw`}
+                style={{ marginTop: 'var(--space3XL)' }}
+              />
+            </div>
+          </ProjectSectionColumns>
         </ProjectSection>
         <ProjectSection>
-          <ProjectSectionContent>
+          <ProjectSectionColumns sticky>
+            <div>
+              <Image
+                srcSet={`${modernSignup} 800w, ${modernSignupLarge} 1440w`}
+                placeholder={modernSignupPlaceholder}
+                alt="A screenshot of an event's signup page in production."
+                sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
+              />
+              <Image
+                srcSet={`${modernComplete} 800w, ${modernCompleteLarge} 1440w`}
+                placeholder={modernCompletePlaceholder}
+                alt="A screenshot showing an onboarding page after signup in production."
+                sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
+                style={{ marginTop: 'var(--space3XL)' }}
+              />
+            </div>
             <ProjectTextRow>
               <ProjectSectionHeading>Signup Here</ProjectSectionHeading>
               <ProjectSectionText>
                 Project Modern's events' catalogue isn't the end. The website is designed to encourage and capture event signup, automating everything with ease.
               </ProjectSectionText>
             </ProjectTextRow>
-            <Image
-              srcSet={`${modernSignup} 800w, ${modernSignupLarge} 1440w`}
-              placeholder={modernSignupPlaceholder}
-              alt="A screenshot of an event's signup page in production."
-              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
-            />
-            <Image
-              srcSet={`${modernComplete} 800w, ${modernCompleteLarge} 1440w`}
-              placeholder={modernCompletePlaceholder}
-              alt="A screenshot showing an onboarding page after signup in production."
-              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
-              style={{ marginTop: 'var(--space3XL)' }}
-            />
-          </ProjectSectionContent>
+          </ProjectSectionColumns>
         </ProjectSection>
       </ProjectContainer>
       <Footer />
