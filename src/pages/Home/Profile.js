@@ -25,8 +25,8 @@ const ProfileText = ({ status, titleId }) => (
     </h2>
     <p className={classNames('profile__description', `profile__description--${status}`)}>
       I’m Cody. Currently, I am based in Austin, working as the lead designer at{' '}
-      <Anchor as={Link} to="/projects/dtt">
-        DevTechTools
+      <Anchor href="https://linkedin.com/company/tech-builders/" target="_blank">
+        Tech Builders
       </Anchor>
       . I am a designer, full-stack developer, and creator of web & mobile solutions with a focus on motion and user experience.
     </p>
