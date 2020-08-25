@@ -9,12 +9,15 @@ import { usePrefersReducedMotion, useRouteTransition } from 'hooks';
 import modernTexture from 'assets/modern.jpg';
 import modernTextureLarge from 'assets/modern-large.jpg';
 import modernTexturePlaceholder from 'assets/modern-placeholder.jpg';
+import supernoteTexture from 'assets/supernote.jpg';
+import supernoteTextureLarge from 'assets/supernote-large.jpg';
+import supernoteTexturePlaceholder from 'assets/supernote-placeholder.jpg';
+import supernoteHomeTexture from 'assets/supernote-home.jpg';
+import supernoteHomeTextureLarge from 'assets/supernote-home-large.jpg';
+import supernoteHomeTexturePlaceholder from 'assets/supernote-home-placeholder.jpg';
 import dttTexture from 'assets/dtt.jpg';
 import dttTextureLarge from 'assets/dtt-large.jpg';
 import dttTexturePlaceholder from 'assets/dtt-placeholder.jpg';
-import mystgangTexture from 'assets/mystgang.jpg';
-import mystgangTextureLarge from 'assets/mystgang-large.jpg';
-import mystgangTexturePlaceholder from 'assets/mystgang-placeholder.jpg';
 import iphone11 from 'assets/iphone-11.glb';
 import macbookPro from 'assets/macbook-pro.glb';
 
@@ -159,9 +162,36 @@ export default function Home(props) {
       />
       <ProjectSummary
         id="project-2"
+        alternate
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
+        title="Supernote"
+        description="Design and development of a note taking app built with React Native."
+        buttonText="View Website"
+        buttonLink="https://supernote.codyb.co"
+        model={{
+          type: 'phone',
+          alt: 'Supernote\'s splash screen.',
+          textures: [
+            {
+              src: supernoteHomeTexture,
+              srcSet: `${supernoteHomeTexture} 254w, ${supernoteHomeTextureLarge} 508w`,
+              placeholder: supernoteHomeTexturePlaceholder,
+            },
+            {
+              src: supernoteTexture,
+              srcSet: `${supernoteTexture} 254w, ${supernoteTextureLarge} 508w`,
+              placeholder: supernoteTexturePlaceholder,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-3"
+        sectionRef={projectThree}
+        visible={visibleSections.includes(projectThree.current)}
+        index={3}
         title="A Tool for Everything"
         description="Creating a platfrom to help developers build better software."
         buttonText="View Project"
@@ -174,27 +204,6 @@ export default function Home(props) {
               src: dttTexture,
               srcSet: `${dttTexture} 800w, ${dttTextureLarge} 1440w`,
               placeholder: dttTexturePlaceholder,
-            },
-          ],
-        }}
-      />
-      <ProjectSummary
-        id="project-3"
-        sectionRef={projectThree}
-        visible={visibleSections.includes(projectThree.current)}
-        index={3}
-        title="MystGang"
-        description="A personal site for a gaming content creator."
-        buttonText="View Project"
-        buttonTo="/projects/mystgang"
-        model={{
-          type: 'laptop',
-          alt: 'MystGang Website',
-          textures: [
-            {
-              src: mystgangTexture,
-              srcSet: `${mystgangTexture} 800w, ${mystgangTextureLarge} 1440w`,
-              placeholder: mystgangTexturePlaceholder,
             },
           ],
         }}
