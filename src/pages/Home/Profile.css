@@ -156,6 +156,27 @@
   max-width: 100%;
 }
 
+.profile__image {
+  max-width: 100%;
+  width: 960px;
+  height: 560px;
+  position: relative;
+}
+
+@media (max-width: 1024px) {
+  .profile__image {
+    width: 960px;
+    height: 1120px;
+  }
+}
+
+@media (max-width: 696px) {
+  .profile__image {
+    width: 480px;
+    height: 560px;
+  }
+}
+
 .profile__image::before {
   content: '';
   background-color: rgb(var(--rgbAccent));
@@ -174,13 +195,6 @@
   animation-iteration-count: 1;
 }
 
-.profile__image {
-  max-width: 100%;
-  width: 960px;
-  height: 560px;
-  position: relative;
-}
-
 .profile__image .selfie__canvas {
   opacity: 0;
 }
@@ -189,13 +203,6 @@
   animation: fade-in var(--durationM) ease var(--delay) forwards;
   animation-iteration-count: 1;
   animation-delay: 1s;
-}
-
-@media (max-width: 1024px) {
-  .profile__image {
-    width: 960px;
-    height: 1120px;
-  }
 }
 
 .profile__button {
