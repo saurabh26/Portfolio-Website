@@ -5,6 +5,7 @@ import {
   sRGBEncoding,
   Scene,
   PerspectiveCamera,
+  SmoothShading,
   AmbientLight,
   DirectionalLight,
 } from 'three';
@@ -18,7 +19,7 @@ import './Selfie.css';
 
 const Selfie = ({ className, delay, alt, ...rest }) => {
   const { theme } = useAppContext();
-  const { rgbBackgroundLight } = theme;
+  const { colorWhite, themeId, rgbBackgroundLight } = theme;
   const container = useRef();
   const canvas = useRef();
   const renderer = useRef();
@@ -50,6 +51,13 @@ const Selfie = ({ className, delay, alt, ...rest }) => {
     const modelLoader = new GLTFLoader();
 
     modelLoader.load(selfieModelPath, model => {
+      model.scene.traverse(node => {
+        if (node.isMesh) {
+          node.material.shading = SmoothShading;
+          node.geometry.computeVertexNormals(true);
+        }
+      });
+
       scene.current.add(model.scene);
       model.scene.position.y = -8;
     });
@@ -62,8 +70,8 @@ const Selfie = ({ className, delay, alt, ...rest }) => {
 
   // Lights
   useEffect(() => {
-    const ambientLight = new AmbientLight(0xFFFFFF, 0.8);
-    const dirLight = new DirectionalLight(0xFFFFFF, 0.8);
+    const ambientLight = new AmbientLight(colorWhite, 0.8);
+    const dirLight = new DirectionalLight(colorWhite, themeId === 'light' ? 1.6 : 0.8);
 
     dirLight.position.set(30, 20, 32);
 
@@ -74,7 +82,7 @@ const Selfie = ({ className, delay, alt, ...rest }) => {
     return () => {
       removeLights(lights.current);
     };
-  }, [rgbBackgroundLight]);
+  }, [colorWhite, themeId, rgbBackgroundLight]);
 
   // Handles window resize
   useEffect(() => {
