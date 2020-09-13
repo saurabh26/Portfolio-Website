@@ -28,6 +28,7 @@ app.post('/functions/sendMessage', async (req, res) => {
   try {
     const { email, message } = req.body;
 
+    // Validate email request
     if (!email || !/(.+)@(.+){2,}\.(.+){2,}/.test(email)) {
       return res.status(400).json({ error: 'Please enter a valid email address' });
     } else if (!message) {

@@ -10,7 +10,6 @@
     "@storybook/addon-a11y": "^6.0.21",
     "@storybook/addon-actions": "^6.0.21",
     "@storybook/addon-knobs": "^6.0.21",
-    "@storybook/addon-links": "^6.0.21",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^6.0.21",
     "babel-loader": "^8.1.0",
@@ -22,7 +21,7 @@
     "react-snap": "1.23.0",
     "react-test-renderer": "^16.13.1",
     "source-map-explorer": "^2.5.0",
-    "stylelint": "^13.7.0",
+    "stylelint": "^13.7.1",
     "stylelint-config-recommended": "^3.0.0"
   },
   "dependencies": {
