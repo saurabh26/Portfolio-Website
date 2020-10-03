@@ -105,7 +105,8 @@ const ArticlesRouter = () => {
   useEffect(() => {
     const grabPosts = async () => {
       const postData = await Promise.all(fetchPosts);
-      setPosts(postData);
+
+      setPosts(postData.sort((a, b) => Date.parse(b.date) - Date.parse(a.date)));
     };
 
     grabPosts();
