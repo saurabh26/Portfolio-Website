@@ -1,12 +1,13 @@
 import React, { lazy, Fragment, Suspense } from 'react';
 import classNames from 'classnames';
 import { Transition } from 'react-transition-group';
-import { Link } from 'components/Link';
 import Anchor from 'components/Anchor';
 import { Button } from 'components/Button';
 import DecoderText from 'components/DecoderText';
 import Divider from 'components/Divider';
 import Section from 'components/Section';
+import Heading from 'components/Heading';
+import Text from 'components/Text';
 import { reflow } from 'utils/transition';
 import prerender from 'utils/prerender';
 import './Profile.css';
@@ -15,26 +16,33 @@ const Selfie = lazy(() => import('./Selfie'));
 
 const ProfileText = ({ status, titleId }) => (
   <Fragment>
-    <h2
+    <Heading
       className={classNames('profile__title', `profile__title--${status}`)}
+      level={2}
       id={titleId}
     >
       <DecoderText text="Hi" start={status !== 'exited'} delay={500} />
-    </h2>
-    <p className={classNames('profile__description', `profile__description--${status}`)}>
+    </Heading>
+    <Text
+      className={classNames('profile__description', `profile__description--${status}`)}
+      size="l"
+    >
       I’m Cody. Currently, I am based in Austin, working as the lead designer at{' '}
       <Anchor href="https://linkedin.com/company/tech-builders/" target="_blank">
         Tech Builders
       </Anchor>
       . I am a designer, full-stack developer, and creator of web & mobile solutions with a focus on motion and user experience.
-    </p>
-    <p className={classNames('profile__description', `profile__description--${status}`)}>
+    </Text>
+    <Text
+      className={classNames('profile__description', `profile__description--${status}`)}
+      size="l"
+    >
       In my spare time, I like to write music and{' '}
       <Anchor href="https://codepen.codyb.co" target="_blank">
         experiment with new tech
       </Anchor>
       . I’m always interested in new projects, so feel free to drop me a line.
-    </p>
+    </Text>
   </Fragment>
 );
 
@@ -58,9 +66,7 @@ const Profile = ({ id, visible, sectionRef }) => {
               <Button
                 secondary
                 className={classNames('profile__button', `profile__button--${status}`)}
-                as={Link}
-                status={status}
-                to="/contact"
+                href="/contact"
                 icon="send"
               >
                 Send me a message

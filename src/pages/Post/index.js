@@ -11,12 +11,14 @@ import { Helmet } from 'react-helmet-async';
 import { MDXProvider } from '@mdx-js/react';
 import Anchor from 'components/Anchor';
 import Code from 'components/Code';
+import Section from 'components/Section';
+import Heading from 'components/Heading';
+import Text from 'components/Text';
 import { reflow } from 'utils/transition';
 import prerender from 'utils/prerender';
 import { media } from 'utils/style';
 import { ReactComponent as ArrowDown } from 'assets/arrow-down.svg';
 import { tokens } from 'app/theme';
-import Section from 'components/Section';
 import './index.css';
 
 const PostWrapper = ({
@@ -131,15 +133,15 @@ const PostWrapper = ({
 };
 
 const PostHeadingTwo = ({ children, ...rest }) => (
-  <h2 className="post__heading-two" {...rest}>
+  <Heading className="post__heading-two" level={2} {...rest}>
     {children}
-  </h2>
+  </Heading>
 );
 
 const PostParagraph = ({ children, ...rest }) => (
-  <p className="post__paragraph" {...rest}>
+  <Text className="post__paragraph" size="l" {...rest}>
     {children}
-  </p>
+  </Text>
 );
 
 const PostImage = ({ src, alt, ...rest }) => {

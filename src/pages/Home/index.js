@@ -147,7 +147,7 @@ export default function Home(props) {
         title="Putting Players First"
         description="Building a community that puts players and game health first, not profits."
         buttonText="View Project"
-        buttonTo="/projects/modern"
+        buttonLink="/projects/modern"
         model={{
           type: 'laptop',
           alt: 'The Modern Project Landing Page',
@@ -195,7 +195,7 @@ export default function Home(props) {
         title="A Tool for Everything"
         description="Creating a platfrom to help developers build better software."
         buttonText="View Project"
-        buttonTo="/projects/dtt"
+        buttonLink="/projects/dtt"
         model={{
           type: 'laptop',
           alt: 'DevTech Tools Landing Page',

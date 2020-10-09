@@ -9,6 +9,7 @@ import Divider from 'components/Divider';
 import { Button } from 'components/Button';
 import Section from 'components/Section';
 import Icon from 'components/Icon';
+import Heading from 'components/Heading';
 import { useScrollRestore, useFormInput, useRouteTransition } from 'hooks';
 import { reflow, isVisible } from 'utils/transition';
 import prerender from 'utils/prerender';
@@ -100,7 +101,7 @@ const Contact = () => {
         <title>Contact | Cody Bennett</title>
         <meta
           name="description"
-          cotent="Send me a message if you’re interested in discussing a project or if you just want to say hi"
+          content="Send me a message if you’re interested in discussing a project or if you just want to say hi"
         />
       </Helmet>
       <TransitionGroup component={null}>
@@ -108,10 +109,12 @@ const Contact = () => {
           <Transition appear mountOnEnter unmountOnExit timeout={1600} onEnter={reflow}>
             {status => (
               <form className="contact__form" method="post" onSubmit={onSubmit}>
-                <h1
+                <Heading
                   className={classNames('contact__title', `contact__title--${status}`, {
                     'contact__title--hidden': prerender,
                   })}
+                  level={2}
+                  as="h1"
                   style={getDelay(tokens.base.durationXS, initDelay, 0.3)}
                 >
                   <DecoderText
@@ -119,7 +122,7 @@ const Contact = () => {
                     start={status !== 'exited' && !prerender}
                     delay={300}
                   />
-                </h1>
+                </Heading>
                 <Divider
                   className={classNames(
                     'contact__divider',

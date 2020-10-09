@@ -7,6 +7,7 @@ import { theme } from '../src/app/theme';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import GothamBook from '../src/assets/fonts/gotham-book.woff2';
 import GothamMedium from '../src/assets/fonts/gotham-medium.woff2';
+import GothamBold from '../src/assets/fonts/gotham-bold.woff2';
 import { fontStyles, globalStyles, AppContext } from '../src/app';
 import '../src/app/index.css';
 import './preview.css';
@@ -44,6 +45,16 @@ addDecorator(story => {
           <link rel="preload" href={GothamMedium} as="font" crossorigin="crossorigin" />
           <style>{fontStyles}</style>
           <style>{globalStyles}</style>
+          <style>
+            {`
+              @font-face {
+                font-family: 'Gotham';
+                font-weight: 700;
+                src: url(${GothamBold}) format('woff2');
+                font-display: swap;
+              }
+            `}
+          </style>
         </Helmet>
         <AppContext.Provider state={{ theme: currentTheme }}>
           <div id="story-root" className="story-root" key={themeKey}>
