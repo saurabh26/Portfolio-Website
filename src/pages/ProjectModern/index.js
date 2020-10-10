@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Image from 'components/Image';
-import Anchor from 'components/Anchor';
+import Link from 'components/Link';
 import Footer from 'components/Footer';
 import {
   ProjectContainer, ProjectBackground, ProjectHeader, ProjectSection,
@@ -106,7 +106,7 @@ function ProjectModern() {
                 I lead the design and development of online services for Project Modern, ranging from website design and development to backing cloud and bot functions.
               </ProjectSectionText>
               <ProjectSectionText>
-                We kept the brand and style of Project Modern consistent throughout its <Anchor href="https://storybook.projectmodern.gg" target="_blank">component-based design</Anchor>.
+                We kept the brand and style of Project Modern consistent throughout its <Link href="https://storybook.projectmodern.gg" target="_blank">component-based design</Link>.
               </ProjectSectionText>
             </ProjectTextRow>
             <Image

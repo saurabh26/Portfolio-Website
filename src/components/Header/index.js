@@ -1,5 +1,5 @@
 import React, { useRef, useState, memo } from 'react';
-import { NavLink, Link } from 'components/Link';
+import { NavLink, Link as RouterLink } from 'react-router-dom';
 import { Transition } from 'react-transition-group';
 import Monogram from 'components/Monogram';
 import Icon from 'components/Icon';
@@ -9,7 +9,7 @@ import { useWindowSize, useAppContext } from 'hooks';
 import { navLinks, socialLinks } from './navData';
 import { reflow } from 'utils/transition';
 import { media, msToNum, numToMs } from 'utils/style';
-import { tokens } from 'app/theme';
+import { tokens } from 'components/ThemeProvider/theme';
 import { blurOnMouseUp } from 'utils/focus';
 import './index.css';
 
@@ -55,7 +55,7 @@ function Header(props) {
 
   return (
     <header className="header" ref={headerRef}>
-      <Link
+      <RouterLink
         className="header__logo"
         to={{ pathname: '/', hash: '#intro', state: hashKey }}
         aria-label="Cody Bennett, Designer & Developer"
@@ -63,7 +63,7 @@ function Header(props) {
         onMouseUp={blurOnMouseUp}
       >
         <Monogram highlight />
-      </Link>
+      </RouterLink>
       <NavToggle onClick={() => dispatch({ type: 'toggleMenu' })} menuOpen={menuOpen} />
       <nav className="header__nav">
         <div className="header__nav-list">

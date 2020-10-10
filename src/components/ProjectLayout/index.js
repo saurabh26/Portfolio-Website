@@ -31,7 +31,8 @@ export function ProjectHeader({
             className={classNames('project__title', {
               'project__title--entered': !prerender,
             })}
-            level={1}
+            level={2}
+            as="h1"
           >
             {title}
           </Heading>
@@ -39,7 +40,7 @@ export function ProjectHeader({
             className={classNames('project__description', {
               'project__description--entered': !prerender,
             })}
-            size="l"
+            size="xl"
           >
             {description}
           </Text>
@@ -124,7 +125,7 @@ export const ProjectSectionContent = ({ className, ...rest }) => (
 export const ProjectSectionHeading = ({ className, ...rest }) => (
   <Heading
     className={classNames('project__section-heading', className)}
-    level={2}
+    level={3}
     {...rest}
   />
 );

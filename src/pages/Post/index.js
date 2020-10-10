@@ -6,10 +6,9 @@ import Divider from 'components/Divider';
 import { numToMs, msToNum } from 'utils/style';
 import { useWindowSize, useScrollRestore } from 'hooks';
 import Image from 'components/Image';
-import GothamBold from 'assets/fonts/gotham-bold.woff2';
 import { Helmet } from 'react-helmet-async';
 import { MDXProvider } from '@mdx-js/react';
-import Anchor from 'components/Anchor';
+import Link from 'components/Link';
 import Code from 'components/Code';
 import Section from 'components/Section';
 import Heading from 'components/Heading';
@@ -18,7 +17,7 @@ import { reflow } from 'utils/transition';
 import prerender from 'utils/prerender';
 import { media } from 'utils/style';
 import { ReactComponent as ArrowDown } from 'assets/arrow-down.svg';
-import { tokens } from 'app/theme';
+import { tokens } from 'components/ThemeProvider/theme';
 import './index.css';
 
 const PostWrapper = ({
@@ -51,17 +50,6 @@ const PostWrapper = ({
       <Helmet>
         <title>{`Articles | ${title}`}</title>
         <meta name="description" content={description} />
-        <link rel="preload" href={GothamBold} as="font" crossorigin="" />
-        <style>
-          {`
-            @font-face {
-              font-family: 'Gotham';
-              font-weight: 700;
-              src: url(${GothamBold}) format('woff2');
-              font-display: swap;
-            }
-          `}
-        </style>
       </Helmet>
       <header className="post__header">
         <div className="post__header-text">
@@ -89,7 +77,7 @@ const PostWrapper = ({
               </div>
             )}
           </Transition>
-          <h1 className="post__title" aria-label={title}>
+          <Heading level={1} weight="bold" className="post__title" aria-label={title}>
             {title.split(' ').map((word, index) => (
               <span className="post__title-word-wrapper" key={`${word}-${index}`}>
                 <span
@@ -102,7 +90,7 @@ const PostWrapper = ({
                 </span>
               </span>
             ))}
-          </h1>
+          </Heading>
           <a
             className="post__banner-arrow"
             href="#postContent"
@@ -133,7 +121,7 @@ const PostWrapper = ({
 };
 
 const PostHeadingTwo = ({ children, ...rest }) => (
-  <Heading className="post__heading-two" level={2} {...rest}>
+  <Heading className="post__heading-two" level={3} {...rest}>
     {children}
   </Heading>
 );
@@ -163,11 +151,7 @@ const PostCode = ({ children, ...rest }) => (
   </code>
 );
 
-const PostLink = ({ children, ...rest }) => (
-  <Anchor target="_blank" {...rest}>
-    {children}
-  </Anchor>
-);
+const PostLink = ({ ...props }) => <Link {...props} />;
 
 const Post = ({ slug, content: PostContent, ...rest }) => {
   return (

@@ -5,12 +5,12 @@ import Section from 'components/Section';
 import { Button } from 'components/Button';
 import Model from 'components/Model';
 import Divider from 'components/Divider';
-import Heading from 'components/Heading';
-import Text from 'components/Text';
 import { useWindowSize } from 'hooks';
 import { reflow, isVisible } from 'utils/transition';
 import { media } from 'utils/style';
 import deviceModels from 'components/Model/deviceModels';
+import Heading from 'components/Heading';
+import Text from 'components/Text';
 import './ProjectSummary.css';
 
 const ProjectSummary = ({
@@ -52,7 +52,8 @@ const ProjectSummary = ({
         </span>
       </div>
       <Heading
-        level={2}
+        level={3}
+        as="h2"
         className={classNames(
           'project-summary__title',
           `project-summary__title--${status}`
@@ -75,9 +76,9 @@ const ProjectSummary = ({
           `project-summary__button--${status}`
         )}
       >
-      <Button iconHoverShift href={buttonLink} iconEnd="arrowRight">
-        {buttonText}
-      </Button>
+        <Button iconHoverShift href={buttonLink} iconEnd="arrowRight">
+          {buttonText}
+        </Button>
       </div>
     </div>
   );

@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import { Transition } from 'react-transition-group';
 import { Helmet } from 'react-helmet-async';
 import { Button } from 'components/Button';
-import { Link } from 'components/Link';
 import DecoderText from 'components/DecoderText';
 import Image from 'components/Image';
 import Heading from 'components/Heading';
@@ -26,7 +25,7 @@ const NotFound = () => (
             <div className="page-404__text">
               <Heading
                 className={classNames('page-404__title', `page-404__title--${status}`)}
-                level={1}
+                level={0}
               >
                 404
               </Heading>
@@ -60,8 +59,7 @@ const NotFound = () => (
                   'page-404__button',
                   `page-404__button--${status}`
                 )}
-                as={Link}
-                to="/"
+                href="/"
                 icon="chevronRight"
               >
                 Back to homepage

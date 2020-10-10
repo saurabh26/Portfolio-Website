@@ -1,7 +1,7 @@
 import React, { lazy, Fragment, Suspense } from 'react';
 import classNames from 'classnames';
 import { Transition } from 'react-transition-group';
-import Anchor from 'components/Anchor';
+import Link from 'components/Link';
 import { Button } from 'components/Button';
 import DecoderText from 'components/DecoderText';
 import Divider from 'components/Divider';
@@ -18,7 +18,7 @@ const ProfileText = ({ status, titleId }) => (
   <Fragment>
     <Heading
       className={classNames('profile__title', `profile__title--${status}`)}
-      level={2}
+      level={3}
       id={titleId}
     >
       <DecoderText text="Hi" start={status !== 'exited'} delay={500} />
@@ -28,9 +28,9 @@ const ProfileText = ({ status, titleId }) => (
       size="l"
     >
       I’m Cody. Currently, I am based in Austin, working as the lead designer at{' '}
-      <Anchor href="https://linkedin.com/company/tech-builders/" target="_blank">
+      <Link href="https://linkedin.com/company/tech-builders/" target="_blank">
         Tech Builders
-      </Anchor>
+      </Link>
       . I am a designer, full-stack developer, and creator of web & mobile solutions with a focus on motion and user experience.
     </Text>
     <Text
@@ -38,9 +38,9 @@ const ProfileText = ({ status, titleId }) => (
       size="l"
     >
       In my spare time, I like to write music and{' '}
-      <Anchor href="https://codepen.codyb.co" target="_blank">
+      <Link href="https://codepen.codyb.co" target="_blank">
         experiment with new tech
-      </Anchor>
+      </Link>
       . I’m always interested in new projects, so feel free to drop me a line.
     </Text>
   </Fragment>

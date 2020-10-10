@@ -1,5 +1,5 @@
 import React from 'react';
-import Anchor from 'components/Anchor';
+import Link from 'components/Link';
 import './index.css';
 
 const Footer = () => (
@@ -7,9 +7,9 @@ const Footer = () => (
     <span className="footer__date">
       {`© 2018-${new Date().getFullYear()} `}
     </span>
-    <Anchor className="footer__link" secondary href="/humans.txt">
+    <Link className="footer__link" secondary href="/humans.txt">
       Cody Bennett
-    </Anchor>
+    </Link>
   </footer>
 );
 

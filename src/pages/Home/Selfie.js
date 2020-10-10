@@ -11,15 +11,15 @@ import {
 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { spring, value } from 'popmotion';
-import { useAppContext, usePrefersReducedMotion, useInViewport } from 'hooks';
+import { usePrefersReducedMotion, useInViewport } from 'hooks';
 import { renderPixelRatio, cleanScene, cleanRenderer, removeLights } from 'utils/three';
 import { rgbToThreeColor } from 'utils/style';
+import { useTheme } from 'components/ThemeProvider';
 import selfieModelPath from 'assets/selfie.glb';
 import './Selfie.css';
 
 const Selfie = ({ className, delay, alt, ...rest }) => {
-  const { theme } = useAppContext();
-  const { colorWhite, themeId, rgbBackgroundLight } = theme;
+  const { colorWhite, themeId, rgbBackgroundLight } = useTheme();
   const container = useRef();
   const canvas = useRef();
   const renderer = useRef();

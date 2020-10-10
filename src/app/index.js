@@ -4,11 +4,10 @@ import { Transition, TransitionGroup, config as transitionConfig } from 'react-t
 import classNames from 'classnames';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Header from 'components/Header';
-import { theme, tokens, createThemeProperties } from 'app/theme';
-import { media, msToNum } from 'utils/style';
+import ThemeProvider from 'components/ThemeProvider';
+import { tokens } from 'components/ThemeProvider/theme';
+import { msToNum } from 'utils/style';
 import { useLocalStorage, usePrefersReducedMotion } from 'hooks';
-import GothamBook from 'assets/fonts/gotham-book.woff2';
-import GothamMedium from 'assets/fonts/gotham-medium.woff2';
 import { initialState, reducer } from 'app/reducer';
 import { reflow } from 'utils/transition';
 import prerender from 'utils/prerender';
@@ -26,22 +25,6 @@ export const AppContext = createContext();
 export const TransitionContext = createContext();
 
 const repoPrompt = `\u00A9 2018-${new Date().getFullYear()} Cody Bennett\n\nCheck out the source code: https://github.com/CodyJasonBennett/portfolio-website`;
-
-export const fontStyles = `
-  @font-face {
-    font-family: "Gotham";
-    font-weight: 400;
-    src: url(${GothamBook}) format("woff");
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "Gotham";
-    font-weight: 500;
-    src: url(${GothamMedium}) format("woff2");
-    font-display: swap;
-  }
-`;
 
 const App = () => {
   const [storedTheme] = useLocalStorage('theme', 'dark');
@@ -65,16 +48,18 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    dispatch({ type: 'setTheme', value: theme[storedTheme] });
+    dispatch({ type: 'setTheme', value: storedTheme });
   }, [storedTheme]);
 
   return (
     <HelmetProvider>
-      <AppContext.Provider value={{ ...state, dispatch }}>
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
-      </AppContext.Provider>
+      <ThemeProvider themeId={state.theme}>
+        <AppContext.Provider value={{ ...state, dispatch }}>
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </AppContext.Provider>
+      </ThemeProvider>
     </HelmetProvider>
   );
 };
@@ -87,10 +72,6 @@ const AppRoutes = () => {
     <Fragment>
       <Helmet>
         <link rel="canonical" href={`https://codyb.co${pathname}`} />
-        <link rel="preload" href={GothamMedium} as="font" crossorigin="" />
-        <link rel="preload" href={GothamBook} as="font" crossorigin="" />
-        <style>{fontStyles}</style>
-        <style>{globalStyles}</style>
       </Helmet>
       <a className="skip-to-main" href="#MainContent">
         Skip to main content
@@ -124,43 +105,5 @@ const AppRoutes = () => {
     </Fragment>
   );
 };
-
-export const globalStyles = `
-  :root {
-    ${createThemeProperties(tokens.base)}
-  }
-
-  @media (max-width: ${media.laptop}px) {
-    :root {
-      ${createThemeProperties(tokens.laptop)}
-    }
-  }
-
-  @media (max-width: ${media.tablet}px) {
-    :root {
-      ${createThemeProperties(tokens.tablet)}
-    }
-  }
-
-  @media (max-width: ${media.mobile}px) {
-    :root {
-      ${createThemeProperties(tokens.mobile)}
-    }
-  }
-
-  @media (max-width: ${media.mobileS}px) {
-    :root {
-      ${createThemeProperties(tokens.mobileS)}
-    }
-  }
-
-  .dark {
-    ${createThemeProperties(theme.dark)}
-  }
-
-  .light {
-    ${createThemeProperties(theme.light)}
-  }
-`;
 
 export default App;
