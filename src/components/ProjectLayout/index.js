@@ -50,10 +50,8 @@ export function ProjectHeader({
             className={classNames('project__link-button', {
               'project__link-button--entered': !prerender,
             })}
-            as="a"
             icon="chevronRight"
             href={url}
-            target="_blank"
           >
             {linkLabel}
           </Button>
@@ -118,14 +116,19 @@ export const ProjectImage = ({ className, ...rest }) => (
   </div>
 );
 
-export const ProjectSectionContent = ({ className, ...rest }) => (
-  <div className={classNames('project__section-content', className)} {...rest} />
+export const ProjectSectionContent = ({ className, wide, ...rest }) => (
+  <div
+    className={classNames('project__section-content', className, {
+      'project__section-content--wide': wide,
+    })}
+    {...rest}
+  />
 );
 
-export const ProjectSectionHeading = ({ className, ...rest }) => (
+export const ProjectSectionHeading = ({ className, level = 3, ...rest }) => (
   <Heading
     className={classNames('project__section-heading', className)}
-    level={3}
+    level={level}
     {...rest}
   />
 );
@@ -136,17 +139,23 @@ export const ProjectSectionText = ({ className, ...rest }) => (
 
 export const ProjectTextRow = ({
   center,
+  justify,
   noMargin,
   className,
   centerMobile,
   ...rest
 }) => (
   <div
-    className={classNames('project__text-row', className, {
-      'project__text-row--center': center,
-      'project__text-row--center-mobile': centerMobile,
-      'project__text-row--no-margin': noMargin,
-    })}
+    className={classNames(
+      'project__text-row',
+      `project__text-row--justify-${justify}`,
+      className,
+      {
+        'project__text-row--center': center,
+        'project__text-row--center-mobile': centerMobile,
+        'project__text-row--no-margin': noMargin,
+      }
+    )}
     {...rest}
   />
 );

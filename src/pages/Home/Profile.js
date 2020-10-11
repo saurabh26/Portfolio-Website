@@ -28,9 +28,7 @@ const ProfileText = ({ status, titleId }) => (
       size="l"
     >
       I’m Cody. Currently, I am based in Austin, working as the lead designer at{' '}
-      <Link href="https://linkedin.com/company/tech-builders/" target="_blank">
-        Tech Builders
-      </Link>
+      <Link href="https://linkedin.com/company/tech-builders" target="_blank">Tech Builders</Link>
       . I am a designer, full-stack developer, and creator of web & mobile solutions with a focus on motion and user experience.
     </Text>
     <Text
